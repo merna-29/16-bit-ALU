@@ -1,0 +1,25 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity PART_B is
+	generic (
+	n: integer := 16
+	);
+	 port(
+		 F : out STD_LOGIC_VECTOR (n-1 downto 0);
+		 A : in STD_LOGIC_VECTOR(n-1 downto 0);
+		 B : in STD_LOGIC_VECTOR(n-1 downto 0);
+		 S : in STD_LOGIC_VECTOR(1 downto 0)
+	     );
+end PART_B;
+
+
+architecture PART_B of PART_B is
+begin
+
+F <= A and B when S = "00" ELSE
+A or B when S ="01" ELSE
+A xor B WHEN S="10" ELSE
+not A WHEN S="11"; 
+
+end PART_B;

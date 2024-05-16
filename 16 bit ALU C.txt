@@ -1,0 +1,26 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity PART_C is
+	generic (
+	n: integer := 16
+	);                
+	 port(
+		 Cin : in STD_LOGIC;
+		 F : out STD_LOGIC_VECTOR(n-1 downto 0);
+		 A : in STD_LOGIC_VECTOR(n-1 downto 0);
+		 S : in STD_LOGIC_VECTOR(1 downto 0)
+	     );
+end PART_C;
+
+
+
+architecture PART_C of PART_C is
+begin
+
+F <=  '0' & A(n-1 downto 1) when S="00" ELSE
+A(0) & A(n-1 downto 1) when S ="01" ELSE
+Cin & A(n-1 DOWNTO 1) WHEN S="10" ELSE
+	A(n-1) & A(n-1 DOWNTO 1)WHEN S="11";
+
+end PART_C;
